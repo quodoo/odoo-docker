@@ -48,22 +48,29 @@ services:
     image: nginx:latest
     container_name: odoo17-proxy
     ports:
-      - "8888:8888"
+      - "80:80"
+      - "443:443"
     volumes:
       # - staticbuild:/app/public
-      - ./odoo-config/nginx.conf:/etc/nginx/nginx.conf
+      - ./odoo-nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       # - react-app
       - odoo17
     networks:
       - odoo-network
-    restart: always    
+    restart: always
+    tty: true   
 
+  # certbot:
+  #   image: certbot/certbot:latest
+  #   volumes:
+  #     - ./odoo-nginx/certs/:/var/www/certbot/:rw
 
 volumes:
   postgres-data:
   odoo-addons:
   odoo-config:
+  odoo-nginx:
   odoo-data:
   odoo-logs:
 
