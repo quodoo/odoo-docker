@@ -37,7 +37,35 @@ services:
       - ./odoo-addons:/mnt/extra-addons
       # - ./core/enterprise:/mnt/enterprise:ro
       - ./odoo-config/odoo.conf:/etc/odoo/odoo.conf
-      - ./odoo-logs/odoo17.log:/var/log/odoo/odoo-server.log
+      - ./odoo-logs:/var/log/odoo/
+      - ./odoo-data:/var/lib/odoo
+    restart: always     
+    networks:
+      - odoo-network        # run as a service
+
+   
+  odoo17-dev:
+    container_name: odoo17-dev
+    image: odoo:17
+    depends_on:
+      - db
+    ports:
+      - "18169:8069"
+      - "18172:8072" # live chat
+    tty: true
+    command: --
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo17@2024
+    volumes:
+      #- /etc/timezone:/etc/timezone:ro
+      #- /etc/localtime:/etc/localtime:ro
+      # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
+      - ./odoo-addons:/mnt/extra-addons
+      # - ./core/enterprise:/mnt/enterprise:ro
+      - ./odoo-config/odoo-dev.conf:/etc/odoo/odoo.conf
+      - ./odoo-logs:/var/log/odoo/
       - ./odoo-data:/var/lib/odoo
     restart: always     
     networks:
