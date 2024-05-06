@@ -1,9 +1,12 @@
 .idea
 
 odoo-data/*
+
 odoo-logs/*
+
 odoo-nginx/*
 !odoo-nginx/odoo-nginx.conf
+
 odoo-config/*
 !odoo-config/odoo-server.conf
 
