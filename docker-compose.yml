@@ -35,6 +35,7 @@ services:
       #- /etc/localtime:/etc/localtime:ro
       # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
       - ./odoo-addons:/mnt/extra-addons
+      - ./3rd-addons:/mnt/3rd-addons:ro
       # - ./core/enterprise:/mnt/enterprise:ro
       - ./odoo-config/odoo.conf:/etc/odoo/odoo.conf
       - ./odoo-logs:/var/log/odoo/
