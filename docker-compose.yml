@@ -6,7 +6,7 @@ services:
     image: postgres:15
     environment:
       POSTGRES_USER: odoo
-      POSTGRES_PASSWORD: odoo17@2024
+      POSTGRES_PASSWORD: POSTGRES_PASSWORD
       POSTGRES_DB: postgres
     restart: always 
     volumes:
@@ -29,20 +29,20 @@ services:
     environment:
       - HOST=db
       - USER=odoo
-      - PASSWORD=odoo17@2024
+      - PASSWORD=POSTGRES_PASSWORD
     volumes:
       #- /etc/timezone:/etc/timezone:ro
       #- /etc/localtime:/etc/localtime:ro
       # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
       - ./odoo-addons:/mnt/extra-addons
+      - ./3rd-addons:/mnt/3rd-addons:ro
       # - ./core/enterprise:/mnt/enterprise:ro
-      - ./odoo-config/odoo.conf:/etc/odoo/odoo.conf
-      - ./odoo-logs/odoo17.log:/var/log/odoo/odoo-server.log
+      - ./odoo-config/odoo-server.conf:/etc/odoo/odoo.conf
+      - ./odoo-logs:/var/log/odoo/
       - ./odoo-data:/var/lib/odoo
     restart: always     
     networks:
       - odoo-network        # run as a service
-
 
   nginx:
     image: nginx:latest
@@ -52,7 +52,7 @@ services:
       - "443:443"
     volumes:
       # - staticbuild:/app/public
-      - ./odoo-nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./odoo-nginx/odoo-nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       # - react-app
       - odoo17
