@@ -1,7 +1,6 @@
 .idea
 
 odoo-data/*
-
 odoo-logs/*
 
 odoo-nginx/*
