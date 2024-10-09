@@ -39,7 +39,7 @@ services:
       - "10036:8069"
       - "20036:8072" # live chat
     tty: true
-    command: odoo --config=/etc/odoo/odoo-server.conf
+    command: odoo --config=/etc/odoo/odoo.conf
     environment:
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo18@2024

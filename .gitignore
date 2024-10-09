@@ -10,7 +10,8 @@ odoo-config/*
 !odoo-config/odoo-server.conf
 
 core/*
-odoo-addons/*
+odoo-addons-3rd/*
+odoo-addons-customs/*
 postgres-data/*
 
 odoo-addons-dev
