@@ -8,7 +8,7 @@ cd odoo-docker
 mkdir odoo-addons-customs odoo-addons-3rd
 # odoo-addons-customs this folder is using for your custom module
 # odoo-addons-3rd this folder is using for your 3rd module
-docker compose up -d
+sudo docker compose up -d
 ```
 
 # Go to web browser: 
@@ -22,8 +22,11 @@ Add custom module on odoo-addons folder
 
 ## Odoo docker command 
 # Restart Odoo service 
-docker restart odoo18-web
-or docker compose restart odoo18
+``` bash
+sudo docker restart odoo18-web
+#or 
+sudo docker compose restart odoo18
+```
 
 **Checking odoo service**:
 
