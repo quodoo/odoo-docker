@@ -7,12 +7,10 @@ git clone https://github.com/erpblogs/odoo-docker.git --dept=1
 cd odoo-docker
 cp odoo-config/odoo-server.conf odoo-config/odoo.conf
 sudo docker compose up -d
+```
 
 # Customize
-Change the config file, docker-compose file and nginx file to update 
-Add custom module on odoo-addons folder
-
-# Custom sould folder
+> Change the config file, docker-compose file and nginx file to update 
 > odoo-addons-customs this folder is using for your custom module
 > odoo-addons-3rd this folder is using for your 3rd module
 > odoo-ee this folder is using for odoo enterprise module
