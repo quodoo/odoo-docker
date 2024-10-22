@@ -5,19 +5,34 @@
 ```bash
 git clone https://github.com/erpblogs/odoo-docker.git --dept=1
 cd odoo-docker
-mkdir odoo-addons-customs odoo-addons-3rd
-# odoo-addons-customs this folder is using for your custom module
-# odoo-addons-3rd this folder is using for your 3rd module
+cp odoo-config/odoo-server.conf odoo-config/odoo.conf
 sudo docker compose up -d
-```
-
-# Go to web browser: 
-[localhost](http://localhost)
-[localhost:18069](http://localhost:18069)
 
 # Customize
 Change the config file, docker-compose file and nginx file to update 
 Add custom module on odoo-addons folder
+
+# Custom sould folder
+> odoo-addons-customs this folder is using for your custom module
+> odoo-addons-3rd this folder is using for your 3rd module
+> odoo-ee this folder is using for odoo enterprise module
+
+# System information
+> odoo-config/odoo-server.conf this file is example config for odoo server configuration
+> odoo-config/odoo.conf this file is example config for odoo configuration
+> odoo-nginx/default.conf this file is example config for nginx
+> default odoo admin username is admin and password is admin
+> default system admin password is odoo18@2024
+> postgres default username is odoo, password is odoo18@2024
+> database name default is odoo18
+> psql connect inside docker network odoo-network: psql -h postgres -U odoo -d odoo18 -p 5432
+> psql connect from localhost: psql -h localhost -U odoo -d odoo18 -p 5433
+> odoo-data is using for odoo data folder
+
+
+# Go to web browser: 
+[localhost](http://localhost)
+[localhost:18069](http://localhost:18069)
 
 
 ## Odoo docker command 
