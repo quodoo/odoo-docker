@@ -68,3 +68,4 @@ volumes:
 networks:
   odoo-network:
     driver: bridge
+    name: odoo-network

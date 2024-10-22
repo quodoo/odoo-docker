@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  odoo17:
+    container_name: odoo17-web
+    image: odoo:17.0
+    user: root
+    ports:
+      - "10026:8069"
+      - "20026:8072" # live chat
+    tty: true
+    command: odoo --config=/etc/odoo/odoo17.conf
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo18@2024
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./odoo-addons-customs:/mnt/extra-addons
+      - ./odoo-addons-3rd:/mnt/3rd-addons
+      - ./odoo-ee:/mnt/odoo-ee
+      - ./odoo-config:/etc/odoo/
+      - ./odoo-data:/var/lib/odoo/
+      - ./odoo-logs:/var/log/odoo/
+    restart: always     
+    networks:
+      - odoo-network        # run as a service
+
+networks:
+  odoo-network:
+    external: true
+    name: odoo-network
